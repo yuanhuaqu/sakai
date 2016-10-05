@@ -1,3 +1,7 @@
 [submodule "turningpoint"]
 	path = turningpoint
 	url = https://git.txstate.edu/its/turningpoint.git
+[submodule "blogwow"]
+	path = blogwow
+	url = https://github.com/txstate-etc/blogwow.git
+	branch = 11.x
