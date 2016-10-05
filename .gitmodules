@@ -1,0 +1,3 @@
+[submodule "turningpoint"]
+	path = turningpoint
+	url = https://git.txstate.edu/its/turningpoint.git
