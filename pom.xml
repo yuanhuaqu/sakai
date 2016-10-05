@@ -117,6 +117,9 @@
                 <module>web</module>
                 <module>webservices</module>
 
+                <!-- Contrib tools -->
+                <module>blogwow</module>
+
                 <!-- TRACS specific -->
                 <module>roster_legacy</module>
                 <module>turningpoint</module>
