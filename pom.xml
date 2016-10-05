@@ -116,6 +116,10 @@
                 <module>velocity</module>
                 <module>web</module>
                 <module>webservices</module>
+
+                <!-- TRACS specific -->
+                <module>roster_legacy</module>
+                <module>turningpoint</module>
             </modules>
         </profile>
         <profile>
