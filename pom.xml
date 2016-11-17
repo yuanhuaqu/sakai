@@ -119,6 +119,7 @@
 
                 <!-- Contrib tools -->
                 <module>blogwow</module>
+                <module>irubric</module>
 
                 <!-- TRACS specific -->
                 <module>roster_legacy</module>
