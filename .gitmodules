@@ -5,3 +5,6 @@
 	path = blogwow
 	url = https://github.com/txstate-etc/blogwow.git
 	branch = 11.x
+[submodule "irubric"]
+	path = irubric
+	url = https://github.com/txstate-etc/irubric
