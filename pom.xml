@@ -119,11 +119,12 @@
 
                 <!-- Contrib tools -->
                 <module>blogwow</module>
-                <module>irubric</module>
+                <module>irubric/irubric-core</module>
+                <module>irubric/irubric-tool</module>
 
-                <!-- TRACS specific -->
+                <!-- TRACS specific
                 <module>roster_legacy</module>
-                <module>turningpoint</module>
+                <module>turningpoint</module>-->
             </modules>
         </profile>
         <profile>

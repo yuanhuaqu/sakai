@@ -15,3 +15,6 @@ sakai-demo.zip
 .DS_Store
 *nb-configuration.xml
 .envrc
+docker/components
+docker/lib
+docker/webapps
