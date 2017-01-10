@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+<util:map id="org.sakaiproject.coursemanagement.GroupProviderConfiguration">
+  <entry key="siteRoleResolutionOrder">
+    <list>
+      <value>instructor</value>
+      <value>ta</value>
+      <value>student</value>
+    </list>
+  </entry>
+  <entry key="officialInstructorToSiteRole" value="instructor"/>
+  <entry key="enrollmentStatusToSiteRole">
+    <map>
+      <entry key="true" value="student"/>
+      <entry key="false" value="student"/>
+    </map>
+  </entry>
+  <entry key="sectionRoleToSiteRole">
+    <map>
+      <entry key="instructor" value="instructor" />
+      <entry key="student" value="student" />
+    </map>
+  </entry>
+  <entry key="courseOfferingRoleToSiteRole">
+    <map>
+      <entry key="instructor" value="instructor"/>
+    </map>
+  </entry>
+</util:map>
+
+</beans>
