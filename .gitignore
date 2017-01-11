@@ -18,3 +18,5 @@ sakai-demo.zip
 docker/components
 docker/lib
 docker/webapps
+rsf/sakai-rsf-web/templates/overlays/
+rsf/sakai-rsf-web/test/overlays/
