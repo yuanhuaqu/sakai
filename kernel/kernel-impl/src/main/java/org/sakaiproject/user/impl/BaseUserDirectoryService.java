@@ -720,12 +720,13 @@ public abstract class BaseUserDirectoryService implements UserDirectoryService, 
 		return null;
 	}
 
+	//enforcing all lowercase in the user id map, bugid:3853 -Qu 10/8/10
 	protected void ensureMappedIdForProvidedUser(UserEdit user)
 	{
 		if (user.getId() == null)
 		{
 			user.setEid(cleanEid(user.getEid()));
-			String eid = user.getEid();
+			String eid = user.getEid().toLowerCase();
 			String id = assureUuid(null, eid);
 			m_storage.putMap(id, eid);
 			user.setId(id);
@@ -2021,6 +2022,8 @@ public abstract class BaseUserDirectoryService implements UserDirectoryService, 
 
 		/** The user eid. */
 		protected String m_eid = null;
+		
+		protected String m_plid = null;
 
 		/** The user first name. */
 		protected String m_firstName = null;
@@ -2338,6 +2341,11 @@ public abstract class BaseUserDirectoryService implements UserDirectoryService, 
 			return m_eid;
 		}
 
+		public String getPlid()
+		{
+			return m_plid;
+		}
+		
 		/**
 		 * @inheritDoc
 		 */
@@ -2691,6 +2699,11 @@ public abstract class BaseUserDirectoryService implements UserDirectoryService, 
 				m_eid = eid;
 				m_sortName = null;
 			}
+		}
+		
+		public void setPlid(String plid)
+		{
+			m_plid = plid;
 		}
 
 		/**

@@ -172,6 +172,15 @@ public class SimpleLdapAttributeMapper implements LdapAttributeMapper {
 		}
 	}
 
+	/**
+	 * Builds a filter of the form &lt;plid-attr&gt;=&lt;<code>plid</code>&gt;
+	 */
+	public String getFindUserByPlidFilter(String plid) {
+		String plidAttr =
+			attributeMappings.get(AttributeMappingConstants.PLID_ATTR_MAPPING_KEY);
+		return plidAttr + "=" + plid;
+	}
+
 	public String getFindUserByAidFilter(String aid) {
 		String eidAttr = 
 			attributeMappings.get(AttributeMappingConstants.AUTHENTICATION_ATTR_MAPPING_KEY);
@@ -288,6 +297,7 @@ public class SimpleLdapAttributeMapper implements LdapAttributeMapper {
             LdapUserData userData, String logicalAttrName) {
         
         String attrValue = attribute.getStringValue();
+        if (null != attrValue) attrValue = attrValue.trim();
         MessageFormat format = valueMappings.get(logicalAttrName);
         if (format != null && attrValue != null) {
             format = (MessageFormat)format.clone();
@@ -336,6 +346,15 @@ public class SimpleLdapAttributeMapper implements LdapAttributeMapper {
         	}
             userData.setLastName(attrValue);
         } else if ( logicalAttrName.equals(AttributeMappingConstants.EMAIL_ATTR_MAPPING_KEY) ) {
+        	//in JLDAP when a user's  email address doesn't exist
+        	if (attrValue == null) {
+        		String userEid = userData.getEid();
+        			if (userEid != null)
+        				attrValue = userData.getEid() + "@txstate.edu";
+        			else{
+        				M_log.info("User Eid is not set yet for this email address " + attrValue);
+        			}
+        	}
         	if ( M_log.isDebugEnabled() ) {
         		M_log.debug("mapLdapAttributeOntoUserData() mapping attribute to User.email: " +
         				"[logical attr name = " + logicalAttrName + 
@@ -343,6 +362,14 @@ public class SimpleLdapAttributeMapper implements LdapAttributeMapper {
         				"][value = " + attrValue + "]");
         	}
             userData.setEmail(attrValue);
+        } else if ( logicalAttrName.equals(AttributeMappingConstants.PLID_ATTR_MAPPING_KEY) ) {
+        	if ( M_log.isDebugEnabled() ) {
+        		M_log.debug("mapLdapAttributeOntoUserData() mapping attribute to User.plid: " +
+        				"[logical attr name = " + logicalAttrName +
+        				"][physical attr name = " + attribute.getName() +
+        				"][value = " + attrValue + "]");
+        	}
+            userData.setPlid(attrValue);
         } else if ( logicalAttrName.equals(AttributeMappingConstants.DISPLAY_ID_ATTR_MAPPING_KEY) ) {
         	if ( M_log.isDebugEnabled() ) {
         		M_log.debug("mapLdapAttributeOntoUserData() mapping attribute to User display Id: " +
@@ -398,6 +425,7 @@ public class SimpleLdapAttributeMapper implements LdapAttributeMapper {
 		}
 		
 		userEdit.setEid(userData.getEid());
+		userEdit.setPlid(userData.getPlid());
 		userEdit.setFirstName(userData.getFirstName());
 		userEdit.setLastName(userData.getLastName());
 		userEdit.setEmail(userData.getEmail());

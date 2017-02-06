@@ -71,6 +71,7 @@ public class SimpleLdapAttributeMapperNullHandlingTest {
 		LdapUserData userData = new LdapUserData();
 		attributeMapper.mapLdapEntryOntoUserData(ldapEntry, userData);
 		assertNull(userData.getEid());
+		assertNull(userData.getPlid());
 		assertEquals("user@example.com", userData.getEmail());
 	}
 
@@ -86,6 +87,7 @@ public class SimpleLdapAttributeMapperNullHandlingTest {
 		LdapUserData userData = new LdapUserData();
 		attributeMapper.mapLdapEntryOntoUserData(ldapEntry, userData);
 		assertNull(userData.getEid());
+		assertNull(userData.getPlid());
 		assertEquals("user@example.com", userData.getEmail());
 	}
 }

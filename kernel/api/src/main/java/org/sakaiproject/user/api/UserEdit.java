@@ -121,4 +121,6 @@ public interface UserEdit extends User, Edit
 	 */
 	void restrictEditEid();
 	
+	
+	void setPlid(String plid);
 }

@@ -44,6 +44,7 @@ import org.w3c.dom.Element;
 class UserEditStub implements UserEdit {
 
 	private String eid;
+	private String userPlid;
 	private String email;
 	private String firstName;
 	private String id;
@@ -293,5 +294,12 @@ class UserEditStub implements UserEdit {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	public void setPlid(String userPlid) {
+		this.userPlid = userPlid;
+	}
+
+	public String getPlid(){
+		return this.userPlid;
+	}
 }

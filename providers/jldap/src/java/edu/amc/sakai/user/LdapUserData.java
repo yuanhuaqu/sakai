@@ -39,6 +39,8 @@ public class LdapUserData
 
 	private String eid;
 
+	private String plid;
+
 	private String firstName;
 	
 	private String preferredFirstName;
@@ -111,6 +113,16 @@ public class LdapUserData
 		this.eid = eid;
 	}
 
+	public String getPlid()
+	{
+		return plid;
+	}
+
+	public void setPlid(String plid)
+	{
+		this.plid = plid;
+	}
+
 	/**
 	 * @return Returns the lastName.
 	 */
@@ -180,6 +192,7 @@ public class LdapUserData
 	public String toString() {
 		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
 			.append("eid",eid)
+			.append("plid",plid)
 			.append("firstName",firstName)
 			.append("preferredFirstName",preferredFirstName)
 			.append("lastName",lastName)

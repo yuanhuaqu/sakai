@@ -60,7 +60,7 @@
 			</map>
 		</entry>
 	</util:map>
-	
+
 	<!-- Course Management site role and group provider services. -->
 	<!--
 		TODO These bean definitions should really be kept within the project itself
@@ -157,7 +157,7 @@
 -->
 
 <!-- Uncomment and configure to use the JLDAPDirectoryProvider -->
-	<!--  import resource="jldap-beans.xml" / -->
+	<import resource="jldap-beans.xml" />
 
 <!--	Uncomment and configure to use the Kerberos Provider.
 

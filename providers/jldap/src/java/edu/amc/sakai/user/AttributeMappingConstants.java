@@ -66,7 +66,8 @@ public abstract class AttributeMappingConstants {
 	 * name of a user entry's group membership attribute
 	 */
 	public static final String GROUP_MEMBERSHIP_ATTR_MAPPING_KEY = "groupMembership";
-	
+
+	public static final String PLID_ATTR_MAPPING_KEY = "plid";
 	public static final String DISPLAY_ID_ATTR_MAPPING_KEY = "displayId";
 	
 	public static final String DISPLAY_NAME_ATTR_MAPPING_KEY = "displayName";
@@ -105,7 +106,9 @@ public abstract class AttributeMappingConstants {
 	 * the physical name of a user entry's group membership attribute
 	 */
 	public static final String DEFAULT_GROUP_MEMBERSHIP_ATTR = "groupMembership";
-	
+
+	public static final String DEFAULT_PLID_ATTR = "plid";
+
 	/**
 	 * Default set of user entry attribute mappings. Keys are
 	 * logical names, values are physical names.
@@ -122,7 +125,7 @@ public abstract class AttributeMappingConstants {
 		DEFAULT_ATTR_MAPPINGS.put(LAST_NAME_ATTR_MAPPING_KEY, DEFAULT_LAST_NAME_ATTR);
 		DEFAULT_ATTR_MAPPINGS.put(EMAIL_ATTR_MAPPING_KEY, DEFAULT_EMAIL_ATTR);
 		DEFAULT_ATTR_MAPPINGS.put(GROUP_MEMBERSHIP_ATTR_MAPPING_KEY, DEFAULT_GROUP_MEMBERSHIP_ATTR);
-		
+		DEFAULT_ATTR_MAPPINGS.put(PLID_ATTR_MAPPING_KEY, DEFAULT_PLID_ATTR);
 	}
 	
 	/**
