@@ -1,0 +1,34 @@
+version: "3"
+services:
+  sakai:
+    build: .
+    ports:
+    - "8080:8080"
+    volumes:
+    - ./conf/http-server.xml:/sakai/conf/server.xml
+    - components-sync:/sakai/components
+    - sakai-sync:/sakai/sakai
+    - webapps-sync:/sakai/webapps
+    - /etc/sakai/security.properties:/etc/sakai/security.properties
+    links:
+    - sakaidb
+  sakaidb:
+    image: registry.its.txstate.edu/mysql-server:5.6
+    ports:
+    - "3307:3306"
+    volumes:
+    - sakaidb:/var/lib/mysql
+    environment:
+      - MYSQL_USER=sakai
+      - MYSQL_PASSWORD=ironchef
+      - MYSQL_DATABASE=sakai
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    command: [mysqld, --character-set-server=utf8, --collation-server=utf8_general_ci]
+volumes:
+  sakaidb: {}
+  components-sync:
+    external: true
+  sakai-sync:
+    external: true
+  webapps-sync:
+    external: true
