@@ -1,12 +1,13 @@
 version: "3"
 services:
   sakai:
-    build: .
+    image: registry.its.txstate.edu/tracs-tomcat:11
     ports:
     - "8080:8080"
     volumes:
     - ./conf/http-server.xml:/sakai/conf/server.xml
     - components-sync:/sakai/components
+    - lib-sync:/sakai/lib
     - sakai-sync:/sakai/sakai
     - webapps-sync:/sakai/webapps
     - /etc/sakai/security.properties:/etc/sakai/security.properties
@@ -27,6 +28,8 @@ services:
 volumes:
   sakaidb: {}
   components-sync:
+    external: true
+  lib-sync:
     external: true
   sakai-sync:
     external: true
