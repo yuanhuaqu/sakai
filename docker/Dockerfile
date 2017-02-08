@@ -1,1 +1,1 @@
-FROM tracs-tomcat:11
+FROM registry.its.txstate.edu/tracs-tomcat:11
