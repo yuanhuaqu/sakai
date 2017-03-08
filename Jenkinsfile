@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'which sudo'
                 sh 'pwd'
-                sh 'docker tag tracs:nightly-test registry.its.txstate.edu/tracs:nightly-test'
+                sh 'sudo docker tag tracs:nightly-test registry.its.txstate.edu/tracs:nightly-test'
             }
         }
     }
