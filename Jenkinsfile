@@ -6,8 +6,9 @@ pipeline {
             steps {
                 sh 'which sudo'
                 sh 'pwd'
-                sh 'sudo docker tag hello-world registry.its.txstate.edu/hello-world'
-                sh 'sudo docker push registry.its.txstate.edu/hello-world'
+                sh 'resty http://147.26.118.230:3000/v1 -H 'Content-type: application/json''
+                sh 'GET /services'
+                sh 'POST /services/tracsdb/images/pull '{"image":"registry.its.txstate.edu/mysql-server:5.6"}'
 
             }
         }
