@@ -20,26 +20,26 @@ node {
 
 
 def buildTracsApp() {
-  stage 'Build'
-            echo " ==================== "
-            echo ' BUILD '
-            echo " ==================== "
-            echo "Building TRACS from ${params.PERSON}"
-            echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-            sh 'sudo docker run registry.its.txstate.edu/tracs-build:11 -q | sudo docker build -t tracs:nightly-test - '
-  stage 'Push'
-             echo " ==================== "
-             echo '   PUSH  '
-             echo " ==================== "
-            //  sh 'printenv'
-             echo 'Prepare for pushing docker image'
-             sh 'sudo docker tag tracs:nightly-test registry.its.txstate.edu/tracs:nightly-test'
-             timeout(time: 3, unit: 'MINUTES') {
-                 retry(5) {
-                     echo 'pushing again!'
-                     sh 'sudo docker push registry.its.txstate.edu/tracs:nightly-test'
-                 }
-             }
+  // stage 'Build'
+  //           echo " ==================== "
+  //           echo ' BUILD '
+  //           echo " ==================== "
+  //           echo "Building TRACS from ${params.PERSON}"
+  //           echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+  //           sh 'sudo docker run registry.its.txstate.edu/tracs-build:11 -q | sudo docker build -t tracs:nightly-test - '
+  // stage 'Push'
+  //            echo " ==================== "
+  //            echo '   PUSH  '
+  //            echo " ==================== "
+  //           //  sh 'printenv'
+  //            echo 'Prepare for pushing docker image'
+  //            sh 'sudo docker tag tracs:nightly-test registry.its.txstate.edu/tracs:nightly-test'
+  //            timeout(time: 3, unit: 'MINUTES') {
+  //                retry(5) {
+  //                    echo 'pushing again!'
+  //                    sh 'sudo docker push registry.its.txstate.edu/tracs:nightly-test'
+  //                }
+  //            }
   stage  'Clean'
              echo " ==================== "
              echo ' CLEAN '
@@ -51,7 +51,12 @@ def buildTracsApp() {
                   GET /services/
               '''
              echo 'Stop and delete container'
-             sh 'DELETE /services/tracstomcat/containers/echo'
+             try {
+               sh 'DELETE /services/tracstomcat/containers/echo'
+             } catch(e){
+               exit 0;
+             }
+
              echo 'Remove old docker image'
              sh 'DELETE /services/tracstomcat/images/registry.its.txstate.edu/tracs:nightly-test'
              sh 'sleep 10'
