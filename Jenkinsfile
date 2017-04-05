@@ -49,18 +49,12 @@ def buildTracsApp() {
                   . /usr/share/jenkins/resty
                   resty http://147.26.118.230:3000/v1 -H "Content-type: application/json"
                   GET /services/
-              '''
-             echo 'Stop and delete container'
-             try {
-               sh 'resty'
-               sh 'DELETE /services/tracstomcat/containers/echo'
-             } catch(e){
-               exit 0;
-             }
-
-             echo 'Remove old docker image'
-             sh 'DELETE /services/tracstomcat/images/registry.its.txstate.edu/tracs:nightly-test'
-             sh 'sleep 10'
+                  echo 'Stop and delete container'
+                  DELETE /services/tracstomcat/containers/echo
+                  echo 'Remove old docker image'
+                  DELETE /services/tracstomcat/images/registry.its.txstate.edu/tracs:nightly-test
+                  sleep 10
+             '''
   stage 'Deploy'
              echo " ==================== "
              echo '   DEPLOY   '
