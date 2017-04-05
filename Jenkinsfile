@@ -45,7 +45,7 @@ def buildTracsApp() {
              echo ' CLEAN '
              echo " ==================== "
              echo '   Clean up previous deployment  '
-             def command = 'GET /services/'
+             def command = GET /services/
              resty(command)
             //  sh '''#!/bin/bash -l
             //       . /usr/share/jenkins/resty
