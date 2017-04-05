@@ -52,6 +52,7 @@ def buildTracsApp() {
               '''
              echo 'Stop and delete container'
              try {
+               sh 'resty'
                sh 'DELETE /services/tracstomcat/containers/echo'
              } catch(e){
                exit 0;
